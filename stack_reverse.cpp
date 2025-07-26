@@ -1,21 +1,24 @@
 #include <iostream>
 using namespace std;
 
-void push(int *stack,int *top,int n)
+int top1 = -1;
+int top2 = -1;
+
+void push(int *stack,int top,int n)
 {
-    if(*top<10)
+    if(top<10)
     {
-        *top = *top + 1;
-        stack[*top] = n;;
+        top = top + 1;
+        stack[top] = n;;
     }
 }
 
-int pop(int *stack,int *top)
+int pop(int *stack,int top)
 {
-    if(*top>-1)
+    if(top>-1)
     {
-        *top = *top -1;
-        return stack[*top+1];
+        top = top -1;
+        return stack[top+1];
     }
     else
     {
@@ -23,9 +26,9 @@ int pop(int *stack,int *top)
     }
 }
 
-void reverse(int *stack1,int *top1,int *stack2,int *top2)
+void reverse(int *stack1,int top1,int *stack2,int top2)
 {
-    while(*top1 != -1)
+    while(top1 != -1)
     {
         push(stack2,top2,pop(stack1,top1));
     }
@@ -35,8 +38,6 @@ int main()
 {
     int stack1[10];
     int stack2[10];
-    int top1 = -1;
-    int top2 = -1;
 
     int choice,num;
 
